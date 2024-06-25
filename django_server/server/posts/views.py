@@ -106,8 +106,8 @@ def CheckSavePost(request):
 def getSavedPost(request):
         
     token=request.GET.dict()['token']
-    byte_token=token.encode('utf-8')
-    username=jwt.decode(byte_token,settings.JWT_SECRET_KEY)['username']
+    # byte_token=token.encode('utf-8')
+    username=jwt.decode(token,settings.JWT_SECRET_KEY, algorithms=["HS256"])['username']
     
     data=SavePost.objects.filter(username=username)
     serialiser=SavedSerialiser(data, many=True)

@@ -57,9 +57,9 @@ def createUser(request):
                 token_data={"username":username}
 
                 token=jwt.encode(token_data,settings.JWT_SECRET_KEY)
-                str_token=token.decode('utf-8')
+                # str_token=token.decode('utf-8')
 
-                return JsonResponse({'message': 'sign-up successful','token':str_token},status=200)
+                return JsonResponse({'message': 'sign-up successful','token':token},status=200)
             
             
     else:
@@ -80,9 +80,9 @@ def loginUser(request):
             token_data={"username":username}
 
             token=jwt.encode(token_data,settings.JWT_SECRET_KEY)
-            str_token=token.decode('utf-8')
+            # str_token=token.decode('utf-8')
 
-            return JsonResponse({'message': 'sign-in successful','token':str_token,"status":200})
+            return JsonResponse({'message': 'sign-in successful','token':token,"status":200})
         else:
             return JsonResponse({'message': 'sign-in not successful',"status":400})
             
@@ -95,8 +95,8 @@ def loginUser(request):
 def getCurrentUser(request):
     if request.method=='GET':
         token=request.GET.dict()['token']
-        byte_token=token.encode('utf-8')
-        username=jwt.decode(byte_token,settings.JWT_SECRET_KEY)['username']
+        # byte_token=token.encode('utf-8')
+        username=jwt.decode(token,settings.JWT_SECRET_KEY, algorithms=["HS256"])['username']
         
         user=list(User.objects.filter(username=username).values())
         user=user[0]
