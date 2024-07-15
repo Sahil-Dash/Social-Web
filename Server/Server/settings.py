@@ -25,7 +25,13 @@ SECRET_KEY = 'django-insecure--65hwsh7^-+@-tr8c(fnwcky0-yek4r15&y%pf1td2pfss62m-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'http://localhost:5174',
+    'http://localhost:5173',
+    "http://localhost:3000",
+    "https://social-web-server.vercel.app/", 
+    "https://snapgram-six-rouge.vercel.app",
+]
 
 
 # settings.py
