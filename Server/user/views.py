@@ -69,7 +69,7 @@ def createUser(request):
         user=User(name=name, username=username, password=password, email=email)
         user.save()
 
-        people=UserPeople(name=user.name, username=username,follower={},following={})
+        people=UserPeople( username=username,follower={},following={})
         people.save()
 
         token_data={"username":username}

@@ -13,7 +13,6 @@ class User(Document):
 
 
 class UserPeople(Document):
-    name=StringField(required = True)
     username=StringField(required=True,primary_key=True)
     follower=DictField(max_length=1000000)
     following=DictField(max_length=1000000)
