@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 
 import { Button } from "../ui/button";
+import { useGetCurrentUser } from "@/lib/react-query/query";
 
 type UserCardProps = {
-  user: any
-
+  user: any;
 };
 
 const UserCard = ({ user }: UserCardProps) => {
-console.log(user)
+  console.log(user);
+
+  const { data: currentUser } = useGetCurrentUser();
 
   return (
     <Link to={`/profile/${user.username}`} className="user-card">
@@ -27,11 +29,13 @@ console.log(user)
         </p>
       </div>
 
-      {/* {(currentUser?.user.username === user.username)
-      ? <h2>You</h2>
-      : <Button type="button" size="sm" className="shad-button_primary px-5">
-        Follow
-      </Button>} */}
+      {currentUser?.user.username === user.username ? (
+        <h2>You</h2>
+      ) : (
+        <Button type="button" size="sm" className="shad-button_primary px-5">
+          Visit
+        </Button>
+      )}
     </Link>
   );
 };
