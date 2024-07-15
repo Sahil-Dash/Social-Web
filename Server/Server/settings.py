@@ -71,8 +71,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5174',
     'http://localhost:5173',
     "http://localhost:3000",
-    "social-web-server.vercel.app",  
-    "https://your-production-domain.com",
+    "https://social-web-server.vercel.app/", 
+    "https://snapgram-six-rouge.vercel.app",
 ]
 
 
