@@ -71,7 +71,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5174',
     'http://localhost:5173',
     "http://localhost:3000",
-    "social-web-server-b1qbb8r86-sahils-projects-d6960853.vercel.app",  
+    "social-web-server.vercel.app",  
     "https://your-production-domain.com",
 ]
 

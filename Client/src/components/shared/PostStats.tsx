@@ -22,7 +22,7 @@ const PostStats = ({ post }: PostProps) => {
   const [likeCount, setLikeCount] = useState(0);
   const location = useLocation();
 
-  const { mutateAsync: updateLikes, isPending: isUpdating } = useUpdateLikes();
+  const { mutateAsync: updateLikes } = useUpdateLikes();
   const { mutateAsync: savePost, isPending: isSaving } = useSavePost();
   const { mutateAsync: delSavedPost, isPending: isDeleting } =
     useDeleteSavedPost();

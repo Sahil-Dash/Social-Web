@@ -80,7 +80,7 @@ const Postform = ({ post, currentUser }: PostFormProps) => {
 
     const response = await createPost(postData);
 
-    // console.log(values)
+    console.log(response);
 
     navigate("/");
   }

@@ -1,7 +1,6 @@
 import { useDeletePost, useGetCurrentUser } from "@/lib/react-query/query";
 import PostStats from "./PostStats";
 import Loader from "@/components/shared/Loader";
-import { Button } from "../ui/button";
 import { formatDistanceToNow } from "date-fns";
 import { Link } from "react-router-dom";
 

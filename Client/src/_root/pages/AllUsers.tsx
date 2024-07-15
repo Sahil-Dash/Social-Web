@@ -2,13 +2,10 @@ import Loader from "@/components/shared/Loader";
 import UserCard from "@/components/shared/UserCard";
 import { Input } from "@/components/ui/input";
 import useDebounce from "@/hooks/useDebounce";
-import { useGetCurrentUser, useGetPostByUsername, useGetUserBySearch, useGetUserByUsername } from "@/lib/react-query/query";
+import { useGetUserBySearch } from "@/lib/react-query/query";
 import { useState } from "react";
 
-
 const AllUsers = () => {
-
-
   type SearchResultProps = {
     isSearching: boolean;
     users: any;
@@ -18,22 +15,21 @@ const AllUsers = () => {
     if (isSearching) {
       return <Loader />;
     } else if (users && users.length > 0) {
-      return users.map((user: any) => (<UserCard  user={user} />))
+      return users.map((user: any) => <UserCard user={user} />);
     } else {
       return (
-        <p className="text-light-4 mt-10 text-center w-full">No results found</p>
+        <p className="text-light-4 mt-10 text-center w-full">
+          No results found
+        </p>
       );
     }
   };
 
+  const [searchValue, setSearchValue] = useState("");
+  let debouncedValue = useDebounce(searchValue, 500);
 
-
-  const [searchValue, setSearchValue] = useState("")
-  let debouncedValue = useDebounce(searchValue, 500)
-
-  const { data: users, isFetching: isSearching } = useGetUserBySearch(debouncedValue)
-  const { data: currentUser } = useGetCurrentUser()
-
+  const { data: users, isFetching: isSearching } =
+    useGetUserBySearch(debouncedValue);
 
   const shouldShowSearchResults = searchValue !== "";
 
@@ -62,16 +58,14 @@ const AllUsers = () => {
 
         <div className="flex flex-wrap gap-9 w-full max-w-5xl">
           {shouldShowSearchResults ? (
-            <SearchResults
-              isSearching={isSearching}
-              users={users}
-            />
-          ) : ""}
+            <SearchResults isSearching={isSearching} users={users} />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
   );
-}
+};
 
-
-export default AllUsers
+export default AllUsers;
